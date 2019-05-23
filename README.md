@@ -13,12 +13,6 @@ ReSpec is not endorsed by W3C or OASIS, and nobody should expect the W3C Webmast
 to provide advice on problems encountered with ReSpec,
 or on why it may be failing to produce compliant content.
 
-Want to change a bibliographical reference?
-===========================================
-
-Bibliographical references have been moved out of ReSpec. You want to use this:
-https://github.com/tobie/specref
-
 Want to see complete documentation?
 ===================================
 
@@ -51,57 +45,6 @@ If you're not familiar with GitHub, you need to follow the following steps:
   button. This allows you to request that the project integrate your changes. Those should normally
   get processed relatively fast (depending on how complex they are).
 
-Running the test suite
-----------------------
-
-_Note: this section is not applicable to the OASIS variant yet._
-
-Respec runs a number of high level, end-to-end tests using [Jasmine][jasmine]. These tests are
-run by [Travis][travis], a hosted continuous integration solution, on each pull requests.
-
-There are two options to run these tests locally: in a browser or using [PhantomJS][phantomjs].
-
-### Running the test suite in a browser
-
-Tests need to be served from the root of the repository to function properly. Any server will do,
-but here's an example using Python's `SimpleHTTPServer`:
-
-```
-$ cd /path/to/repo/
-$ python -m SimpleHTTPServer
-Serving HTTP on 0.0.0.0 port 8000 ...
-```
-
-Navigating to `http://localhost:8000/tests/SpecRunner.html` with any recent browser will launch the
-test suite.
-
-### Running the test suite in PhantomJS
-
-[PhantomJS][phantomjs] is a headless, WebKit-based browser. It allows running the tests directly
-from the command line.
-
-In order to run the test from the command line, you need to [install Node][install-node], [npm][npm]
-and [PhantomJS][install-phjs]. _Note that npm comes bundled with recent versions of Node._
-
-Once these dependencies are installed, running the test suite should be as simple as:
-
-```
-$ npm test
-```
-
-
-[jasmine]: http://pivotal.github.io/jasmine/
-[travis]: https://travis-ci.org/w3c/respec
-[phantomjs]: http://phantomjs.org/
-[install-phjs]: http://phantomjs.org/download.html
-[install-node]: http://nodejs.org/download/
-[npm]: https://npmjs.org/
-
-## Building ReSpec
-
-Whenever you run the test suite a new build is made for you. You can run `tools/test-build.js` to
-obtain the same result.
-
 ## Releasing ReSpec
 
 ### OASIS Profile
@@ -110,18 +53,18 @@ Normally, only @ndjc makes releases. But in the eventuality that he is not avail
 can follow this process:
 
 1. Make sure you are up to date and on the 'feature/oasis-style' branch (git up; git checkout feature/oasis-style)
-2. Go to 'tools/oasis'
+2. Go to 'tools'
 3. Bump the version in `package-oasis.json`.
 4. Run the build script (node build-oasis-common.js). This should respond "OK!" (if not, fix the
    issue).
-5. Add the new build (git add builds/oasis/respec-oasis-common-m.n.r.js).
+5. Add the new build (git add builds/respec-oasis-common-m.n.r.js).
 6. Commit your changes (git commit)
 7. Merge to gh-pages (git checkout gh-pages; git merge feature/oasis-style)
 8. (when needed) Tag the release (git tag v3.x.y) and be sure that git is pushing tags.
 9. Push everything back to the server (make sure you are pushing at least the `feature/oasis-style` and
    `gh-pages` branches).
 
-The simplest way of doing this, is to just run `tools/oasis/release.js`. This will prompt you a few times
+The simplest way of doing this, is to just run `tools/release.js`. This will prompt you a few times
 with the above process.
 
 This hasn't been adopted by OASIS, this work is in progress.
