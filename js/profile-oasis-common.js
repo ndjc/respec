@@ -7,77 +7,73 @@ var requireConfig = {
             exports:    "shortcut"
         },
         "n3-browser.min": {
-        	exports: "N3"
+            exports: "N3"
         }
     }
 };
-//if ("respecVersion" in window && respecVersion) {
-//    requireConfig.paths = {
-//        "ui": "https://raw.github.com/darobin/respec/gh-pages/js/ui",
-//    };
-//}
+
 
 require.config(requireConfig);
 
 define([
             "domReady"
-        ,   "core/base-runner"
-        ,   "core/ui"
-        ,   "core/override-configuration"
-        ,   "core/default-root-attr"
-        ,   "core/markdown"
-        ,   "core/style"
-        ,   "oasis/style"
-        ,   "oasis/headers"
-/*      ,   "oasis/abstract" */
-        ,   "oasis/conventions"
-        ,   "oasis/conformance"
-        ,   "core/data-transform"
-        ,   "core/data-include"
-        ,   "core/inlines"
-        ,   "core/examples"
-        ,   "core/issues-notes"
-        ,   "core/requirements"
-        ,   "core/highlight"
-        ,   "core/best-practices"
-        ,   "core/figures"
-        ,   "oasis/biblio"
-        ,   "core/rdfa"
-        ,   "core/webidl-oldschool"
-        ,   "core/dfn"
-        ,   "core/fix-headers"
-        ,   "oasis/structure"
-        ,   "oasis/informative"
-        ,   "core/id-headers"
-        ,   "oasis/conformance-table"
-        ,   "oasis/aria"
-        ,   "oasis/vocab"
-        ,   "oasis/shape"
-        ,   "core/shiv"
-        ,   "core/remove-respec"
-        ,   "core/location-hash"
-        ,   "ui/about-respec"
-        ,   "ui/save-html"
-        ,   "ui/search-specref"
+        ,   "base-runner"
+        ,   "ui"
+        ,   "override-configuration"
+        ,   "default-root-attr"
+        ,   "markdown"
+        ,   "style"
+        ,   "style"
+        ,   "headers"
+/*      ,   "abstract" */
+        ,   "conventions"
+        ,   "conformance"
+        ,   "data-transform"
+        ,   "data-include"
+        ,   "inlines"
+        ,   "examples"
+        ,   "issues-notes"
+        ,   "requirements"
+        ,   "highlight"
+        ,   "best-practices"
+        ,   "figures"
+        ,   "biblio"
+        ,   "rdfa"
+        ,   "webidl-oldschool"
+        ,   "dfn"
+        ,   "fix-headers"
+        ,   "structure"
+        ,   "informative"
+        ,   "id-headers"
+        ,   "conformance-table"
+        ,   "aria"
+        ,   "vocab"
+        ,   "shape"
+        ,   "shiv"
+        ,   "remove-respec"
+        ,   "location-hash"
+        ,   "about-respec"
+        ,   "save-html"
+        ,   "search-specref"
         ],
         function (domReady, runner, ui) {
             var args = Array.prototype.slice.call(arguments);
             domReady(function () {
-                ui.addCommand("Save Snapshot", "ui/save-html", "Ctrl+Shift+Alt+S");
-                ui.addCommand("About ReSpec", "ui/about-respec", "Ctrl+Shift+Alt+A");
+                ui.addCommand("Save Snapshot", "save-html", "Ctrl+Shift+Alt+S");
+                ui.addCommand("About ReSpec", "about-respec", "Ctrl+Shift+Alt+A");
                 runner.runAll(args);
             });
         }
 );
 
 function vocabToSpec(util, content, uri) {
-	var vocab = require("oasis/vocab");
-	return vocab.vocabToSpec(util, content, uri);
+    var vocab = require("vocab");
+    return vocab.vocabToSpec(util, content, uri);
 }
 
 function shapeToSpec(util, content, uri) {
-	var shape = require("oasis/shape");
-	return shape.shapeToSpec(util, content, uri);
+    var shape = require("shape");
+    return shape.shapeToSpec(util, content, uri);
 }
 
 
